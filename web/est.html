@@ -1,0 +1,49 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Slacker
+  Date: 2018/10/11
+  Time: 19:36
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+  <head>
+    <title>$Title$</title>
+    <link rel="stylesheet" href="../WEB-INF/layui/css/layui.css">
+    <link rel="stylesheet" href="dist/APlayer.min.css">
+
+    <script src="dist/APlayer.min.js">
+    </script>
+    <script src="WEB-INF/layui/layui.js"></script>
+  </head>
+  <body>
+  <div id="aplayer" >sdfsfsd</div>
+  <script>
+      const ap = new APlayer({
+          container: document.getElementById('aplayer'),
+          mini: false,
+          autoplay: false,
+          theme: '#FADFA3',
+          loop: 'all',
+          order: 'random',
+          preload: 'auto',
+          volume: 0.7,
+          mutex: true,
+          listFolded: false,
+          listMaxHeight: 90,
+          lrcType: 3,
+          audio:
+              {
+                  name: '摆渡',
+                  artist: '吕行',
+                  url: 'music/吕行 - 摆渡.mp3',
+                  cover: 'cover1.jpg',
+
+                  theme: '#ebd0c2'
+              }
+
+      });
+
+  </script>
+  </body>
+</html>

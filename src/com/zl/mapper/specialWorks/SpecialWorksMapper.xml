@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.zl.mapper.specialWorks.SpecialWorksMapper">
+
+    <sql id="all_general_column">
+       SONG_ID,SONG_NAME,SINGER_NAME_ART,SINGER_NAME_CHINESE,SONG_LONGTIME,song_ReleseTime,SINGER_ID,SINGER_IMAGE,SONG_PATH,SONG_LRC
+       ,SPECIAL_ID,SPECIAL_NAME,SPECIAL_IMAGE,SPECIAL_INTRODUCTION,SPECIAL_RELESETIME,SPECIAL_VISITORVOLUME
+    </sql>
+    <select id="getGeneralList" resultType="specialWorks">
+        select
+        <include refid="all_general_column"/>
+        from SpecialWorks
+        where 1=1
+        limit #{0},#{1}
+    </select>
+   <select id="getSomeThingList" parameterType="int" resultType="specialWorks">
+       select
+       <include refid="all_general_column"/>
+       from SpecialWorks
+       where SPECIAL_ID =#{specialId}
+   </select>
+    <select id="getSearchList" parameterType="string" resultType="specialWorks">
+        select
+        <include refid="all_general_column"/>
+        from SpecialWorks
+        WHERE 1=1 AND SONG_NAME LIKE "%"#{songName}"%"
+    </select>
+    <select id="getGeneralCount" resultType="int">
+        select  count(*) from  SpecialWorks
+        where 1=1
+    </select>
+
+    <select id="getGeneralByIdList" resultType="specialWorks">
+        select
+        <include refid="all_general_column"/>
+        from SpecialWorks
+        where 1=1 and SPECIAL_ID =#{2}
+        limit #{0},#{1}
+    </select>
+
+    <select id="getGengralWorksId" parameterType="int" resultType="specialWorks">
+        select
+        <include refid="all_general_column"/>
+        from SpecialWorks
+        where 1=1 and SONG_ID = #{songId}
+    </select>
+
+    <select id="getGengralWorksSingerId" parameterType="int" resultType="specialWorks">
+        select
+        <include refid="all_general_column"/>
+        from SpecialWorks
+        where 1=1 and SINGER_ID = #{singerId}
+    </select>
+    <select id="getCeneralByIdCount" resultType="int">
+        select
+        count(*)
+        from SpecialWorks
+        where 1=1 and SINGER_ID =#{singerId};
+    </select>
+</mapper>

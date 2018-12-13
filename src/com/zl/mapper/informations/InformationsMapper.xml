@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.zl.mapper.informations.InformationsMapper">
+     <sql id="all_information_column">
+        INFORMATION_ID,INFORMATION_TITLE,INFORMATION_INTRODUCTION
+     </sql>
+    <select id="getInformationList" resultType="information">
+        select
+        <include refid="all_information_column"/>
+        from INFORMATION
+        LIMIT #{0},#{1}
+    </select>
+    <select id="countInformation" resultType="int">
+        select count(*) from INFORMATION
+    </select>
+
+    <select id="getInformationById" parameterType="int" resultType="information">
+        select
+        <include refid="all_information_column"/>
+        from INFORMATION
+        where INFORMATION_ID=#{informationId}
+    </select>
+    <delete id="delInformation" parameterType="int">
+        delete from INFORMATION where INFORMATION_ID=#{informationId}
+    </delete>
+    <update id="updateInformation" parameterType="information">
+        update INFORMATION
+        <set>
+            <if test="informationTitle != null">
+                INFORMATION_TITLE = #{informationTitle},
+            </if>
+            <if test="informationIntroduction != null">
+                INFORMATION_INTRODUCTION=#{informationIntroduction}
+            </if>
+        </set>
+        where INFORMATION_ID= #{informationId}
+    </update>
+
+    <insert id="addInformation" parameterType="information" >
+        insert into INFORMATION(
+            INFORMATION_TITLE,INFORMATION_INTRODUCTION
+        )
+        VALUES (#{informationTitle},#{informationIntroduction})
+    </insert>
+</mapper>

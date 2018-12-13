@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>音乐客栈</title>
+   <link rel="stylesheet" href="../bootstrap-3.3.7/bootstrap-3.3.7/dist/css/bootstrap.css">
+   <link rel="stylesheet" href="../bootstrap-3.3.7/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="../mplayer/css/mplayer.min.css">
+   <link rel="stylesheet" href="../dist/APlayer.min.css">
+      <link rel="stylesheet" href="../css/playList.css">
+
+   <script src="../bootstrap-3.3.7/bootstrap-3.3.7/dist/js/bootstrap.js"></script>	
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+ 
+
+</head>
+<body>
+<!-- 头部-->
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">音乐客栈</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">歌手</a></li>
+		<li><a href="Song_List.html">歌单</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">排行榜 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+                        <li><a href="Classical_List.html">经典老歌榜</a></li>
+                        <li><a href="Network_List.html">网络红歌榜</a></li>
+                        <li><a href="KTV_List.html">KTV热门榜</a></li>	
+                        <li class="divider"></li>
+                        <li><a href="DJHot_List.html">动听DJ排行榜</a></li>
+                        <li class="divider"></li>
+                        <li><a href="other/Ballad_List.html">民谣排行榜</a></li>
+                    </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">搜索</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="PersonalCenter.html">个人中心</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img alt="Brand" src="image/1.jpg" class="img-circle" style="height:23px;width:34px;">
+      <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li></li>
+            <li><a href="javascript:;">修改信息</a></li>
+            <li><a href="javascript:;">安全管理</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="javascript:;">退了</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="box-center">
+     <div class="box-one">
+	    <ul> 
+		    <li><a href="#">
+			<span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>&nbsp;&nbsp;正在播放</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;播放历史</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;&nbsp;我收藏的单曲</a></li>
+		</ul>
+         <hr>
+	 </div>
+	 <div class="box-two">
+         <div class="box-two-one text-center">
+             <div class="item-one"></div>
+             <div class="item-two"></div>
+             <div class="item-three">歌曲</div>
+             <div class="item-four">演唱者</div>
+             <div class="item-five">专辑</div>
+             <div class="item-six"></div>
+         </div>
+         <div class="box-two-two table-responsive">
+         <table class="table table-hover">
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="text-center"><input type="checkbox" name="one" ></td>
+                 <td class="text-center">
+                     <span class="glyphicon glyphicon-stats" style="color: #dd7e0d"></span>
+                 </td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">展展与罗罗</td>
+                 <td colspan="4" class="text-center">沙漠骆驼</td>
+                 <td colspan="4" class="text-center">
+                     <span class="glyphicon glyphicon-heart-empty" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-option-horizontal" ></span>
+                     &nbsp;&nbsp;
+                     <span class="glyphicon glyphicon-remove-circle" ></span>
+                 </td>
+             </tr>
+
+         </table>
+         </div>
+         <hr>
+         <div class="two-footer ">
+             <div class="two-footer-one ">
+             <ul>
+                 <li><input type="checkbox" name="one" ></li>
+                 <li> <a href="#" class="btn btn-xs btn-default" role="button">删除</a></li>
+                 <li> <a href="#" class="btn btn-xs btn-default" role="button">收藏</a></li>
+                 <li> <a href="#" class="btn btn-xs btn-default" role="button">添加到歌单</a></button></li>
+                 <li> <a href="#" class="btn btn-xs btn-default" role="button">更多</a></li>
+             </ul>
+             </div>
+             <div class="two-footer-two pull-right text-center">
+                 <a href="#" class="btn btn-xs btn-default" role="button">手机继续听</a>
+             </div>
+         </div>
+     </div>
+	 <div class="box-three">
+         <div class="row">
+             <div class="col-md-12 text-center" ><img src="../image/1.jpg"class="img-circle"></div>
+         </div>
+         <div class="row">
+             <div class="col-md-4 text-center"><a href="#">
+                 <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+             </a></div>
+             <div class="col-md-4 text-center"><a href="#">
+                 <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+             </a></div>
+             <div class="col-md-4 text-center"><a href="#">
+                 <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+             </a></div>
+         </div>
+         <div class="row">
+             <div class="col-md-12 text-center">
+                歌词
+             </div>
+         </div>
+     </div>
+</div>
+
+<div id="aplayer" class="foot-player"></div>
+
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+    <script src="../bootstrap-3.3.7/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>	
+	 <script src="../dist/APlayer.min.js">
+</script>
+<script>
+
+const ap = new APlayer({
+    container: document.getElementById('aplayer'),
+    mini: false,
+    autoplay: false,
+    theme: '#FADFA3',
+    loop: 'all',
+    order: 'random',
+    preload: 'auto',
+    volume: 0.7,
+    mutex: true,
+    listFolded: true,
+    listMaxHeight: 90,
+    lrcType: 3,
+    audio: [
+        {
+         name: '摆渡',
+         artist: '吕行',
+         url: '../music/吕行 - 摆渡.mp3',
+         cover: 'cover1.jpg',
+		  
+         theme: '#ebd0c2'
+        },
+		{
+         name: '摆渡',
+         artist: '吕行',
+         url: '../music/吕行 - 摆渡.mp3',
+         cover: 'cover1.jpg',
+		  
+         theme: '#ebd0c2'
+        }
+       ]
+    
+});
+
+</script>
+	
+	
+	
+
+
+
+
+</body>
+</html>

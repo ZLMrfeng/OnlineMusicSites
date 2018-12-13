@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.zl.mapper.user.UserMapper">
+
+    <sql id="all_user_column">
+        USER_ID,USER_NAME,COUNT_NAME,COUNT_PASSWORD,USER_SEX,USER_EMAIL,USER_IMAGE,CREATE_DATE,USERTYPE_ID
+    </sql>
+    <select id="getUserList" resultType="user">
+        select
+        <include refid="all_user_column"/>
+        from user
+        where 1=1
+        LIMIT #{0},#{1}
+    </select>
+    <select id="getUserListOver" parameterType="String" resultType="user">
+    select
+    <include refid="all_user_column"/>
+    from USER
+        where USER_NAME  LIKE "%"#{userName}"%"
+    </select>
+    <select id="getUserName" parameterType="user" resultType="user">
+
+        select
+        <include refid="all_user_column"/>
+        from USER
+        <where>
+            <if test ="countName != null">
+                AND COUNT_NAME = '${countName}'
+            </if>
+            <if test ="countPassword != null">
+                AND COUNT_PASSWORD = '${countPassword}'
+            </if>
+        </where>
+
+    </select>
+    <select id="getUserCount" resultType="int">
+        select Count(*) from USER
+    </select>
+    <select id="getUserById" parameterType="int" resultType="user">
+        select  * from user
+        where user_Id =#{userId}
+    </select>
+
+    <delete id="delUser" parameterType="int" >
+        delete from user where user_Id =#{userId}
+    </delete>
+
+    <update id="updateUser" parameterType="user">
+        UPDATE USER
+        <set>
+            <if test = "userName!=null">
+                USER_NAME = #{userName},
+            </if>
+
+            <if test = "countName!=null">
+                COUNT_NAME = #{countName},
+            </if>
+            <if test="countPassword!=null">
+             COUNT_PASSWORD=#{countPassword},
+            </if>
+            <if test = "userSex!=null">
+               USER_SEX = #{userSex},
+            </if>
+            <if test="userEmail !=null">
+              USER_EMAIL=#{userEmail},
+            </if>
+            <if test = "userImage != null">
+                USER_IMAGE = #{userImage},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE=#{createDate},
+            </if>
+            <if test="userTypeId !=0">
+              USERTYPE_ID=#{userTypeId}
+            </if>
+
+        </set>
+        WHERE USER_ID= #{userId}
+    </update>
+    <insert id="addUser" parameterType="user">
+        insert into USER(
+          USER_NAME,COUNT_NAME,COUNT_PASSWORD,USER_SEX,USER_EMAIL,USER_IMAGE,CREATE_DATE,USERTYPE_ID
+        )
+        values(#{userName},#{countName},#{countPassword},#{userSex},#{userEmail},#{userImage},#{createDate},#{userTypeId})
+    </insert>
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.zl.mapper.generalWorks.GeneralWorksMapper">
+
+    <sql id="all_general_column">
+       SONG_ID,SONG_NAME,SINGER_NAME_ART,SINGER_NAME_CHINESE,SONG_LONGTIME,song_ReleseTime,SINGER_ID,SINGER_IMAGE,SONG_PATH,SONG_LRC
+    </sql>
+    <select id="getGeneralList" resultType="generalWorks">
+        select
+        <include refid="all_general_column"/>
+        from GeneralWorks
+        where 1=1
+        limit #{0},#{1}
+    </select>
+
+    <select id="getSearchList" parameterType="string" resultType="generalWorks">
+        select
+        <include refid="all_general_column"/>
+        from GeneralWorks
+        WHERE 1=1 AND SONG_NAME LIKE "%"#{songName}"%"
+    </select>
+    <select id="getGeneralCount" resultType="int">
+        select  count(*) from  GeneralWorks
+        where 1=1
+    </select>
+
+    <select id="getGeneralByIdList" resultType="generalWorks">
+        select
+        <include refid="all_general_column"/>
+        from GeneralWorks
+        where 1=1 and SINGER_ID =#{2}
+        limit #{0},#{1}
+    </select>
+
+    <select id="getGengralWorksId" parameterType="int" resultType="generalWorks">
+        select
+        <include refid="all_general_column"/>
+        from GeneralWorks
+        where 1=1 and SONG_ID = #{songId}
+    </select>
+
+    <select id="getGengralWorksById" parameterType="int" resultType="generalWorks">
+        select
+        <include refid="all_general_column"/>
+        from GeneralWorks
+        where 1=1 and SONG_ID = #{songId}
+    </select>
+    <select id="getGengralWorksSingerId" parameterType="int" resultType="generalWorks">
+        select
+        <include refid="all_general_column"/>
+        from GeneralWorks
+        where 1=1 and SINGER_ID = #{singerId}
+    </select>
+
+    <select id="getGengralWorksBySingerId" parameterType="int" resultType="generalWorks">
+        select
+        <include refid="all_general_column"/>
+        from GeneralWorks
+        where 1=1 and SINGER_ID = #{singerId}
+    </select>
+    <select id="getCeneralByIdCount" resultType="int">
+        select
+        count(*)
+        from GeneralWorks
+        where 1=1 and SINGER_ID =#{singerId};
+    </select>
+</mapper>

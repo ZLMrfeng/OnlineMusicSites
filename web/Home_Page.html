@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>音乐客栈</title>
+   <link rel="stylesheet" href="layui/css/layui.css" >
+   <link rel="stylesheet" href="bootstrap-3.3.7/bootstrap-3.3.7/dist/css/bootstrap.css">
+   <link rel="stylesheet" href="bootstrap-3.3.7/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="mplayer/css/mplayer.min.css">
+   <script src="bootstrap-3.3.7/bootstrap-3.3.7/dist/js/bootstrap.js"></script>	
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+   
+   <style>
+   
+     .dBorder{
+	   border-right:1px gray solid;
+	   
+	 
+	 }
+     .hd{
+	    font-size: 24px;
+		color: #333;
+		height: 38px;
+		line-height: 38px;
+		border-bottom: 2px solid #32b150;
+	 }
+	.hd a{
+	   font-size:12px;
+	}
+	.create-empty{
+	  margin:10px;
+	  padding:2px;
+	}
+	.carousel{
+	    margin:10px;
+	    height:380px;
+		background-color:#000;
+		
+	}
+	.carousel .item{
+	    height:380px;
+		background-color:#000;
+	}
+	.carousel img{
+	    width:100%;
+	}
+	.navbar{
+	  margin:20px 0px;
+	}
+    .thumbnail img{
+	    width:80%;
+		height:189px;
+	}
+	.copyright{
+	    background: #111;
+    font-size: 13px;
+    text-align: center;
+    color: #555;
+    padding-top: 14px;
+    padding-bottom: 20px;
+    border-top: 1px solid #303030;
+	}
+	.main-footer {
+	   margin-top:10px;
+    background: #202020;
+    padding: 35px 0 0;
+    color: #959595;
+}
+   .widget {
+    margin-bottom: 35px;
+}
+.widget .title {
+    margin-top: 0;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 21px;
+    position: relative;
+}
+
+   </style>
+</head>
+<body>
+<!-- 头部-->
+<div class="container">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">音乐客栈</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">歌手</a></li>
+		<li><a href="Song_List.html">歌单</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">排行榜 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+                        <li><a href="Classical_List.html">经典老歌榜</a></li>
+                        <li><a href="Network_List.html">网络红歌榜</a></li>
+                        <li><a href="KTV_List.html">KTV热门榜</a></li>	
+                        <li class="divider"></li>
+                        <li><a href="DJHot_List.html">动听DJ排行榜</a></li>
+                        <li class="divider"></li>
+                        <li><a href="Ballad_List.html">民谣排行榜</a></li>
+                    </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">搜索</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="PersonalCenter.html">个人中心</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img alt="Brand" src="image/1.jpg" class="img-circle" style="height:23px;width:34px;">
+      <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li></li>
+            <li><a href="javascript:;">修改信息</a></li>
+            <li><a href="javascript:;">安全管理</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="javascript:;">退了</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- 轮播导航-->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<!-- 轮播（Carousel）指标 -->
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>   
+	<!-- 轮播（Carousel）项目 -->
+	<div class="carousel-inner">
+		<div class="item active">
+			<a href="#"><img src="image/1.jpg" alt="First slide"></a>
+		<div class="carousel-caption">
+			<h1>欢迎来到音乐客栈</h1>
+			<p>本站将为音乐爱好者提供一个优质的听歌平台</p>
+			<p><a class="btn btn-primary btn-lg" role="button">
+			了解本站>></a></p>
+	        </div>
+		</div>
+		<div class="item">
+			<a href="#"><img src="image/2.jpg" alt="Second slide"></a>
+			
+
+		</div>
+		<div class="item">
+			<a href="#"><img src="image/3.jpg" alt="Third slide"></a>
+		</div>
+	</div>
+	<!-- 轮播（Carousel）导航 -->
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div> 
+</div>
+<!--歌手介绍-->
+<div class="container">
+<div class="hd">
+歌手站
+<a href="singer.html" target="_blank" class="pull-right" >更多>></a>
+</div>
+<div class="row" style="margin:0px;padding:25px;">
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img src="image/6.jpg" alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">歌手作品>></a> </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">歌手作品>></a> </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">歌手作品>></a> </p>
+      </div>
+    </div>
+  </div>
+ </div>
+<div class="row" style="margin:0px;padding:25px;">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">歌手作品>></a> </p>
+      </div>
+    </div>
+  </div>
+
+   <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">歌手作品>></a> </p>
+      </div>
+    </div>
+  </div>
+   <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">歌手作品>></a> </p>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<!--结束-->
+<div class="container">
+<!-- 展示部分-->
+<div class="page_major"> 
+    
+	<div class="row">
+	    <div class="col-md-4 dBorder">		
+        <div>
+	    <em>热门分类</em>
+		<ul>
+		<a href="/album/zctj.html" target="tag" title="热门TOP500">热门TOP500</a>
+		<span>|</span>
+		<a href="/album/zctj.html" target="tag" title="最新歌曲TOP100">最新歌曲TOP100</a>
+		<span>|</span>
+		<a href="/album/zctj.html" target="tag" title="站长推荐">站长推荐</a>
+		<span>|</span>
+		<a href="/album/zctj.html" target="tag" title="经典歌曲">经典歌曲</a>
+		<span>|</span>
+		<a href="/album/zctj.html" target="tag" title="民谣歌曲">民谣歌曲</a>
+		<span>|</span>
+		</ul>
+	    </div>
+<!-- 左边结束-->
+		</div>
+		<div class="col-md-5 ">
+		
+<!-- 中间边框设计-->
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#music-room" aria-controls="music-room" role="tab" data-toggle="tab">音乐推荐</a></li>
+    <li role="presentation"><a href="#hot-TOP" aria-controls="hot-TOP" role="tab" data-toggle="tab">热门TOP100</a></li>
+    <li role="presentation"><a href="#new-song" aria-controls="new-song" role="tab" data-toggle="tab">最新歌曲TOP100</a></li>
+    <li role="presentation"><a href="#classical-song" aria-controls="classical-song" role="tab" data-toggle="tab">经典歌曲</a></li>
+
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="music-room">
+	     <table class="table table-striped">
+	    <tr>
+		    <th>序号</th>
+			<th>标识</th>
+			<th>歌名</th>
+			<th>专辑</th>
+			<th>时间</th>
+			<th></th>
+		</tr>
+		<tr>
+		    <td>1</td>
+			<td>图标</td>
+			<td>一次就好</td>
+			<td>沈腾</td>
+			<td>03:23</td>
+			<td></td>
+		</tr>
+		<tr>
+		    <td colspan="6"  class="text-center" >
+			 <nav aria-label="Page navigation">
+       <ul class="pagination">
+         <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+			</td>
+		</tr>
+    </table>   
+	</div>
+    <div role="tabpanel" class="tab-pane" id="hot-TOP">
+	     <table class="table table-striped">
+	    <tr>
+		    <th>序号</th>
+			<th>标识</th>
+			<th>歌名</th>
+			<th>专辑</th>
+			<th>时间</th>
+			<th></th>
+		</tr>
+		<tr>
+		    <td>1</td>
+			<td>图标</td>
+			<td>一次就好</td>
+			<td>沈腾</td>
+			<td>03:23</td>
+			<td></td>
+		</tr>
+		<tr>
+		    <td colspan="6"  class="text-center" >
+			 <nav aria-label="Page navigation">
+       <ul class="pagination">
+         <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+			</td>
+		</tr>
+    </table>   
+	</div>
+    <div role="tabpanel" class="tab-pane" id="new-song">
+	     <table class="table table-striped">
+	    <tr>
+		    <th>序号</th>
+			<th>标识</th>
+			<th>歌名</th>
+			<th>专辑</th>
+			<th>时间</th>
+			<th></th>
+		</tr>
+		<tr>
+		    <td>1</td>
+			<td>图标</td>
+			<td>一次就好</td>
+			<td>沈腾</td>
+			<td>03:23</td>
+			<td></td>
+		</tr>
+		<tr>
+		    <td colspan="6"  class="text-center" >
+			 <nav aria-label="Page navigation">
+       <ul class="pagination">
+         <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+			</td>
+		</tr>
+    </table>   
+	</div>
+    <div role="tabpanel" class="tab-pane" id="classical-song"> <table class="table table-striped">
+	    <tr>
+		    <th>序号</th>
+			<th>标识</th>
+			<th>歌名</th>
+			<th>专辑</th>
+			<th>时间</th>
+			<th></th>
+		</tr>
+		<tr>
+		    <td>1</td>
+			<td>图标</td>
+			<td>一次就好</td>
+			<td>沈腾</td>
+			<td>03:23</td>
+			<td></td>
+		</tr>
+		<tr>
+		    <td colspan="6"  class="text-center" >
+			 <nav aria-label="Page navigation">
+       <ul class="pagination">
+         <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+			</td>
+		</tr>
+    </table>   </div>
+  </div>
+
+
+<!-- 中间结束-->
+		</div>
+	    <div class="col-md-3">
+<!-- 右边框设计-->		
+		   <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+    
+      <div class="layui-carousel" id="test1">
+        <div carousel-item>
+          <div class="layui-bg-green demo-carousel><p class="layui-bg-green demo-carousel">在这里，你将以最直观的形式体验 layui！</p></div>
+          <div class="layui-bg-red demo-carousel><p class="layui-bg-red demo-carousel">在编辑器中可以执行 layui 相关的一切代码</p></div>
+          <div class="layui-bg-blue demo-carousel><p class="layui-bg-blue demo-carousel">你也可以点击左侧导航针对性地试验我们提供的示例</p></div>
+          <div class="layui-bg-orange demo-carousel><p class="layui-bg-orange demo-carousel">如果最左侧的导航的高度超出了你的屏幕</p></div>
+          <div class="layui-bg-cyan demo-carousel><p class="layui-bg-cyan demo-carousel">你可以将鼠标移入导航区域，然后滑动鼠标滚轮即可</p></div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script src="layui/layui.js"></script>
+<script>
+layui.use('carousel',function(){
+   var carousel = layui.carousel;
+   
+  //执行一个轮播实例
+    carousel.render({
+    elem: '#test1'
+    ,width: '100%' //设置容器宽度
+    ,height: 200
+	,arrow: 'hover'
+     
+    ,anim: 'fade' //切换动画方式
+   });
+});
+</script>
+
+	<div class="news" styel="border:1px green solid">
+				<div class="hd">
+					推荐资讯
+					<div class="pull-right">
+						<a href="javascript:;" class="left "  role="button" data-slide="prev"><</a>
+						<a href="javascript:;" class="right "  role="button" data-slide="next">></a>
+					</div>
+				</div>
+				<div class="bd">		
+					<ul class="animation curr" style="display:block" db="1">
+						
+						<li class="ell"><i></i><a href="http://5sing.kugou.com/yc/3733784.html" target="_blank" title="THE SxPLAY与V.K克跨越海岸的合作新曲《手掌心》">THE SxPLAY与V.K克跨越海岸的合作新曲《手掌心》</a></li>
+						<li class="ell"><i></i><a href="http://5sing.kugou.com/67920008/zj/5bbffebab0f5bae33716d65f.html" target="_blank" title="【推荐】动画原声专辑《侠肝义胆沈剑心》，豪情万丈！">【推荐】动画原声专辑《侠肝义胆沈剑心》，豪情万丈！</a>
+						</li><li class="ell"><i></i><a href="http://5sing.kugou.com/yc/3723070.html" target="_blank" title="【首发】叶洛洛萌系洗脑新歌《蛋黄蛋白》">【首发】叶洛洛萌系洗脑新歌《蛋黄蛋白》</a></li><li class="ell"><i></i><a href="http://5sing.kugou.com/fc/16729613.html" target="_blank" title="【推荐】30位古风大大献唱《我爱你中国》">【推荐】30位古风大大献唱《我爱你中国》</a></li>
+						<li class="ell"><i></i><a href="http://5sing.kugou.com/yc/3719864.html" target="_blank" title="【首发】一体机音乐人余音新歌《老地方》">【首发】一体机音乐人余音新歌《老地方》</a></li><li class="ell"><i></i><a href="http://5sing.kugou.com/topic/aqy/aqy.html" target="_blank" title="【招募】爱奇艺国风美少年报名入口">【招募】爱奇艺国风美少年报名入口</a></li>
+						<li class="ell"><i></i><a href="http://5sing.kugou.com/yc/3714124.html" target="_blank" title="【首发】叶洛洛古风新曲《如萤》">【首发】叶洛洛古风新曲《如萤》</a></li>
+						<li class="ell"><i></i><a href="http://5sing.kugou.com/yc/3714124.html" target="_blank" title="【首发】叶洛洛古风新曲《如萤》">【首发】叶洛洛古风新曲《如萤》</a></li>
+						<li class="ell"><i></i><a href="http://5sing.kugou.com/yc/3714124.html" target="_blank" title="【首发】叶洛洛古风新曲《如萤》">【首发】叶洛洛古风新曲《如萤》</a></li>
+						<li class="ell"><i></i><a href="http://5sing.kugou.com/yc/3714124.html" target="_blank" title="【首发】叶洛洛古风新曲《如萤》">【首发】叶洛洛古风新曲《如萤》</a></li>
+						
+					</ul> 	
+				</div>
+	</div>
+</div>
+<!-- 右边结束-->
+		</div>
+	</div>
+    </div>
+</div>
+</div>
+
+<!---->
+
+<!-- 嵌入的播放器-->
+<div class="mp">
+    <div class="mp-box">
+        <img src="img/mplayer_error.png" alt="music cover" class="mp-cover">
+        <div class="mp-info">
+            <p class="mp-name">歌名</p>
+            <p class="mp-singer">歌手</p>
+            <p><span class="mp-time-current">00:00</span>/<span class="mp-time-all">00:00</span></p>
+        </div>
+        <div class="mp-btn">
+            <button class="mp-prev" title="上一首"></button>
+            <button class="mp-pause" title="播放"></button>
+            <button class="mp-next" title="下一首"></button>
+            <button class="mp-mode" title="播放模式"></button>
+            <div class="mp-vol">
+                <button class="mp-vol-img" title="静音"></button>
+                <div class="mp-vol-range" data-range_min="0" data-range_max="100" data-cur_min="80">
+                    <div class="mp-vol-current"></div>
+                    <div class="mp-vol-circle"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mp-pro">
+            <div class="mp-pro-current"></div>
+        </div>
+        <div class="mp-menu">
+            <button class="mp-list-toggle"></button>
+            <button class="mp-lrc-toggle"></button>
+        </div>
+    </div>
+    <button class="mp-toggle">
+        <span class="mp-toggle-img"></span>
+    </button>
+    <div class="mp-lrc-box">
+        <ul class="mp-lrc"></ul>
+    </div>
+    <button class="mp-lrc-close"></button>
+    <div class="mp-list-box">
+        <ul class="mp-list-title"></ul>
+        <table class="mp-list-table">
+            <thead>
+                <tr>
+                    <th>歌名</th>
+                    <th>歌手</th>
+                    <th>时长</th>
+                </tr>
+            </thead>
+            <tbody class="mp-list"></tbody>
+        </table>
+    </div>
+</div>
+
+		
+   	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+    <script src="bootstrap-3.3.7/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>			
+	<script src="mplayer/js/mplayer.js"></script>
+	<script src="mplayer/js/mplayer-list.js"></script>
+	<script src="mplayer/js/mplayer-functions.js"></script>
+	<script src="http://cdn.bootcss.com/jquery-nstslider/1.0.13/jquery.nstSlider.min.js"></script>
+<script>
+var modeText = ['顺序播放','单曲循环','随机播放','列表循环'];
+var player = new MPlayer({
+	// 容器选择器名称
+	containerSelector: '.mp',
+	// 播放列表
+	songList: mplayer_song,
+	// 专辑图片错误时显示的图片
+	defaultImg: 'img/mplayer_error.png',
+	// 自动播放
+	autoPlay: true,
+	// 播放模式(0->顺序播放,1->单曲循环,2->随机播放,3->列表循环(默认))
+	playMode:0,
+	playList:0,
+	playSong:0,
+	// 当前歌词距离顶部的距离
+	lrcTopPos: 34,
+	// 列表模板，用${变量名}$插入模板变量
+	listFormat: '<tr><td>${name}$</td><td>${singer}$</td><td>${time}$</td></tr>',
+	// 音量滑块改变事件名称
+	volSlideEventName:'change',
+	// 初始音量
+	defaultVolume:80
+}, function () {
+	// 绑定事件
+	this.on('afterInit', function () {
+		console.log('播放器初始化完成，正在准备播放');
+	}).on('beforePlay', function () {
+		var $this = this;
+		var song = $this.getCurrentSong(true);
+		var songName = song.name + ' - ' + song.singer;
+		console.log('即将播放'+songName+'，return false;可以取消播放');
+	}).on('timeUpdate', function () {
+		var $this = this;
+		console.log('当前歌词：' + $this.getLrc());
+	}).on('end', function () {
+		var $this = this;
+		var song = $this.getCurrentSong(true);
+		var songName = song.name + ' - ' + song.singer;
+		console.log(songName+'播放完毕，return false;可以取消播放下一曲');
+	}).on('mute', function () {
+		var status = this.getIsMuted() ? '已静音' : '未静音';
+		console.log('当前静音状态：' + status);
+	}).on('changeMode', function () {
+		var $this = this;
+		var mode = modeText[$this.getPlayMode()];
+		$this.dom.container.find('.mp-mode').attr('title',mode);
+		console.log('播放模式已切换为：' + mode);
+	});
+});
+
+
+$(document.body).append(player.audio); // 测试用
+
+setEffects(player);
+
+
+</script>
+<!-- 播放器结束-->
+
+	
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="widget">
+                    <h4 class="title">友情链接</h4>
+                   
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="widget">
+                    <h4 class="title">我们用到的技术</h4>
+                    
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="widget">
+                    <h4 class="title">赞助商</h4>
+                    <div class="content friend-links">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <span>Copyright &copy; <a href="#">都市猎人</a></span> |
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

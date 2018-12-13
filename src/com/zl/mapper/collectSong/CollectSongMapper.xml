@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.zl.mapper.collectSong.CollectSongMapper">
+
+    <sql id="all_general_column">
+       COLLECT_ID,SONG_ID,SINGER_ID,USER_ID
+    </sql>
+    <select id="getCollectSongList" resultType="collectSong">
+        select
+        <include refid="all_general_column"/>
+        from CollectSong
+        where 1=1  AND USER_ID = #{2}
+        limit #{0},#{1}
+    </select>
+    <delete id="delCollectSong" parameterType="int">
+        delete  from CollectionSong where 1=1 and COLLECTION_ID = #{collectId}
+    </delete>
+
+    <insert id="addCollectSong" parameterType="collectSong" >
+        insert into CollectSong(
+        SONG_ID,SINGER_ID,USER_ID
+        )VALUES (#{songId},#{singerId},#{userId})
+    </insert>
+</mapper>

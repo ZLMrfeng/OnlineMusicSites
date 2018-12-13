@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.zl.mapper.singers.SingerMapper">
+		<sql id="all_singer_columns">
+		singer_Id,singer_name_Chinese,singer_name_Forgin,singer_name_Art,singer_Sex,singer_Address,singer_birthday,singer_Hobby,singer_Production,singer_Debut
+,singer_Introduction
+,singer_Image
+,company_Name
+,singer_VisitorVolume
+	</sql>
+
+	<sql id="update_singer_column">
+		<if test = "singernameChinese != null">
+			SINGER_NAME_CHINESE = #{singernameChinese},
+		</if>
+		<if test = "singernameForgin != null">
+			SINGER_NAME_FORGIN = #{singernameForgin},
+		</if>
+		<if test = "singernameArt != null">
+			SINGER_NAME_ART = #{singernameArt},
+		</if>
+		<if test = "singerSex != null">
+			SINGER_SEX = #{singerSex},
+		</if>
+		<if test ="singerAddress != null">
+			SINGER_ADDRESS = #{singerAddress},
+		</if>
+		<if test ="singerBirthday != null">
+			SINGER_BIRTHDAY = #{singerBirthday},
+		</if>
+		<if test = "singerHobby != null">
+			SINGER_HOBBY =#{singerHobby},
+		</if>
+		<if test = "singerProduction != null">
+			SINGER_PRODUCTION = #{singerProduction},
+		</if>
+		<if test =" singerDebut != null">
+			SINGER_DEBUT = #{singerDebut},
+		</if>
+		<if test = "singerIntroduction != null">
+			SINGER_INTRODUCTION = #{singerIntroduction},
+		</if>
+		<if test = "singerImage != null">
+			SINGER_IMAGE = #{singerImage},
+		</if>
+		<if test = "companyName != null">
+			COMPANY_NAME =#{companyName},
+		</if>
+		<if test="singerVisitorVolume != 0">
+			SINGER_VISITORVOLUME = #{singerVisitorVolume}
+		</if>
+	</sql>
+
+		<select id="getSingerList" resultType="singer">
+			SELECT
+			<include refid="all_singer_columns"/>
+			FROM   SINGER
+			<!--where标签有两个用途：1:添加sql中的where关键字 2:判断第一个条件不需要and  -->
+		     where 1=1
+			limit #{0},#{1}
+		</select>
+		<select id="getSingerById" parameterType="int" resultType="singer">
+			SELECT
+			<include refid="all_singer_columns"/>
+			FROM   SINGER
+			where 1=1 AND
+			   singer_Id=#{singer_Id}
+		</select>
+	<select id="getSingerCount" resultType="int">
+		select count(*) from SINGER
+	</select>
+	<delete id="delSinger" parameterType="int">
+		delete from SINGER where SINGER_ID = #{singerId}
+	</delete>
+	<update id="updateSinger" parameterType="singer">
+		update SINGER
+		<set>
+			<include refid="update_singer_column"/>
+		</set>
+		where SINGER_ID = #{singerId}
+	</update>
+
+	<insert id="addSinger" parameterType="singer">
+		insert into SINGER(
+			singer_name_Chinese,singer_name_Forgin,singer_name_Art,singer_Sex,singer_Address,singer_birthday,singer_Hobby,singer_Production,singer_Debut
+,singer_Introduction
+,singer_Image
+,company_Name
+,singer_VisitorVolume
+		)
+		values (#{singernameChinese},#{singernameForgin},#{singernameArt},#{singerSex}
+		     ,#{singerAddress},#{singerBirthday},#{singerHobby},#{singerProduction},#{singerDebut}
+		     ,#{singerIntroduction},#{singerImage},#{companyName},#{singerVisitorVolume}
+		)
+	</insert>
+
+
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.zl.mapper.special.SpecialMapper">
+
+    <sql id="all_special_column">
+        SPECIAL_ID,SPECIAL_NAME,SPECIAL_IMAGE,SONG_ID,SPECIAL_INTRODUCTION,SPECIAL_RELESETIME,SPECIAL_VISITORVOLUME
+    </sql>
+    <sql id="update_special_column">
+        <if test ="specialName != null">
+          SPECIAL_NAME = #{specialName},
+        </if>
+        <if test = "specialImage != null">
+          SPECIAL_IMAGE = #{specialImage},
+        </if>
+        <if test = "songId != null">
+            SONG_ID = #{songId},
+        </if>
+        <if test = "specialIntroduction != null">
+            SPECIAL_INTRODUCTION = #{specialIntroduction},
+        </if>
+        <if test = "specialReleseTime != null">
+            SPECIAL_RELESETIME = #{specialReleseTime},
+        </if>
+        <if test = "specialVisitorVolume != null">
+            SPECIAL_VISITORVOLUME = #{specialVisitorVolume}
+        </if>
+    </sql>
+    <select id="getSpecialList" resultType="special">
+        select
+        <include refid="all_special_column"/>
+        from SPECIAL
+        where 1=1
+        LIMIT #{0},#{1}
+    </select>
+    <select id="getSpecialCount" resultType="int">
+        select Count(*) from SPECIAL
+    </select>
+    <select id="getSpecialById" parameterType="int" resultType="special">
+        select  * from SPECIAL
+        where SPECIAL_ID =#{specialId}
+    </select>
+
+    <delete id="delSpecial" parameterType="int" >
+        delete from SPECIAL where SPECIAL_ID =#{specialId}
+    </delete>
+
+    <update id="updateSpecial" parameterType="special">
+        UPDATE SPECIAL
+        <set>
+          <include refid="update_special_column"/>
+        </set>
+        WHERE SPECIAL_ID =#{specialId}
+    </update>
+    <insert id="addSpecial" parameterType="special">
+        insert into SPECIAL(
+         SPECIAL_NAME,SPECIAL_IMAGE,SONG_ID,SPECIAL_INTRODUCTION,SPECIAL_RELESETIME,SPECIAL_VISITORVOLUME
+        )
+        values(#{specialName},#{specialImage},#{songId},#{specialIntroduction},#{specialReleseTime},#{specialVisitorVolume})
+    </insert>
+</mapper>

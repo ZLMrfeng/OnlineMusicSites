@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.zl.mapper.song.SongMapper">
+
+	<sql id="all_songs_column">
+			SONG_ID,SONG_NAME,SINGER_ID,SONG_LRC,SONG_RELESETIME,SONG_LONGTIME,SONG_NUMBEROFCLICK,SONG_PATH
+	</sql>
+    <sql id="update_song_column">
+		<if test="songName != null">
+			SONG_NAME = #{songName},
+		</if>
+		<if test = "singerId != 0">
+			SINGER_ID=#{singerId},
+		</if>
+		<if test=  "songLrc != null">
+			SONG_LRC=#{songLrc},
+		</if>
+		<if test="songReleseTime != null">
+			SONG_RELESETIME = #{songReleseTime},
+		</if>
+		<if test = "songLongTime != null">
+			SONG_LONGTIME = #{songLongTime},
+		</if>
+		<if test="songNumberOfClick != 0">
+			SONG_NUMBEROFCLICK=#{songNumberOfClick},
+		</if>
+		<if test="songPath != 0">
+			SONG_PATH = #{songPath}
+		</if>
+	</sql>
+
+
+	<select id="getSongList" resultType="songs">
+		select
+		<include refid="all_songs_column"/>
+		from SONG
+		where 1=1
+		LIMIT #{0},#{1}
+	</select>
+	<select id="getSongCount" resultType="int">
+		select count(*) from SONG
+	</select>
+	<select id="getSongById" parameterType="int" resultType="songs">
+		select
+		<include refid="all_songs_column"/>
+		from SONG
+		where SONG_ID=#{songId}
+	</select>
+    <delete id="delSong" parameterType="int">
+		delete from SONG where SONG_ID=#{songId}
+	</delete>
+    <update id="updateSong" parameterType="songs" >
+	update SONG
+	<set>
+		<include refid="update_song_column"/>
+	</set>
+	where SONG_ID =#{songId}
+	</update>
+	<insert id="addSong" parameterType="songs">
+		<selectKey keyProperty="songId" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID() AS songId
+		</selectKey>
+		insert into SONG(
+		SONG_NAME,SINGER_ID,SONG_LRC,SONG_RELESETIME,SONG_LONGTIME,SONG_NUMBEROFCLICK,SONG_PATH
+		)
+		values(#{songName},#{singerId},#{songLrc},#{songReleseTime},#{songLongTime},#{songNumberOfClick},#{songPath})
+	</insert>
+
+
+</mapper>

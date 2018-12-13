@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration   
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">  
+
+<configuration>	 
+	<settings>
+		<!-- 是否开启自动驼峰命名规则  USER_ID userId-->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>	
+		<!--开启延迟加载的总开关  -->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<!--开启按需加载的开关  -->
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<setting name="useActualParamName" value="false"/>
+		<!--开启二级缓存  -->
+		<!-- <setting name="cacheEnabled" value="true"/> -->
+	</settings>	
+	<!--设置别名  -->
+ 	<typeAliases> 		
+ 		<!--批量设置别名 -->
+ 		<package name="com.zl.bean"/>
+ 	</typeAliases>
+	<!-- 加入所有的sql映射文件 -->
+	<mappers>
+		 <!-- 规则: 接口类和sql映射文件必须同名,然后在同一路径 -->
+		 <package name="com.zl.mapper"/>
+	</mappers>
+</configuration>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.zl.mapper.userType.UserTypeMapper">
+
+    <sql id="all_userType_column">
+         USERTYPE_ID,USERTYPE_NAME
+    </sql>
+    <sql id="update_userType_column">
+        <if test ="userTypeName != null">
+            USERTYPE_NAME =#{userTypeName}
+        </if>
+    </sql>
+    <select id="getUserTypeList" resultType="userType">
+        select
+        <include refid="all_userType_column"/>
+        from USERTYPE
+        where 1=1
+        LIMIT #{0},#{1}
+    </select>
+    <select id="getUserTypeCount" resultType="int">
+        select Count(*) from USERTYPE
+    </select>
+    <select id="getUserTypeById" parameterType="int" resultType="userType">
+        select  * from USERTYPE
+        where USERTYPE_ID =#{userTypeId}
+    </select>
+
+    <delete id="delUserType" parameterType="int" >
+        delete from USERTYPE where USERTYPE_ID =#{userTypeId}
+    </delete>
+
+    <update id="updateUserType" parameterType="userType">
+        UPDATE USERTYPE
+        <set>
+          <include refid="update_userType_column"/>
+        </set>
+        WHERE USERTYPE_ID= #{userTypeId}
+    </update>
+    <insert id="addUserType" parameterType="userType">
+        insert into USERTYPE(
+          USERTYPE_NAME
+        )
+        values(#{userTypeName})
+    </insert>
+</mapper>
